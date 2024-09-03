@@ -1,11 +1,15 @@
 package game.engine.java.api;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Class the returns and holds the session
  */
 public class PlayerSessionService {
     private static PlayerSessionService instance;
-    // TODO Replace the below playerSession with a map of playerSessions (one for each client / player)
+    // TODO Replace the below playerSession with a map of playerSessions (one for each client / player) ----
+    private Map<String, PlayerSession> map = new HashMap<String, PlayerSession>();
     private PlayerSession playerSession = new PlayerSession();
 
     /**
@@ -25,8 +29,11 @@ public class PlayerSessionService {
      * @returns PlayerSession, that holds data related to the games player session (current room, inventory etc)
      */
 
-    // TODO return session based on id, instead of always the same session
+    // TODO return session based on id, instead of always the same session ----
     public PlayerSession getPlayerSession(String sessionId) {
+        if (map.containsKey(sessionId)) {
+            return map.get(sessionId);
+        }
         return playerSession;
     }
 
@@ -36,9 +43,13 @@ public class PlayerSessionService {
      * @param sessionId: Request that holds data from the http client request
      * @returns PlayerSession, the player session that has been reset.
      */
-    // TODO return session based on id, instead of always the same session
+    // TODO return session based on id, instead of always the same session ----
     public PlayerSession resetPlayerSession(String sessionId) {
+        if (sessionId == null) {
+            sessionId = "default";
+        }
         this.playerSession = new PlayerSession();
+        this.map.put(sessionId, this.playerSession);
         return playerSession;
     }
 

@@ -7,12 +7,20 @@ import java.util.List;
  * Class that holds data, related to the game state, that is returned to the client
  */
 public class GameStateResponse {
-    private GameEntityResponse currentRoom;
+    public GameEntityResponse currentRoom;
     private List<GameEntityResponse> objectsInRoom = new ArrayList<>();
+    private List<GameEntityResponse> _inventory = new ArrayList<>();
     private String lastActionResult;
 
     public void setCurrentRoom(GameEntityResponse currentRoom) {
         this.currentRoom = currentRoom;
+    }
+    public List<GameEntityResponse> getInventory() {
+        return _inventory;
+    }
+
+    public void set_inventory(List<GameEntityResponse> _inventory) {
+        this._inventory = _inventory;
     }
 
     public List<GameEntityResponse> getObjectsInRoom() {

@@ -115,7 +115,7 @@ export class SmallAdventureCanvas extends LitElement {
             <div class="border-div"> 
         <div >Current room: ${this.scenarioShortDescription}</div>
         <div >Room description: ${this.scenarioFullDescription}   </div>
-    </div>
+            </div>
     ${this.renderLastResult()}
         <div class="border-div">
         <div >Objects in the room:  </div>

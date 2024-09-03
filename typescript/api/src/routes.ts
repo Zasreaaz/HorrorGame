@@ -62,6 +62,7 @@ router.get("/action/:objectId/:actionId", (req, res) => {
 
     const newRoom: Room = gameTemplate.getRoom(playerSession.currentRoom);
     const responseObject: GameStateResponse = new GameStateResponse();
+
     if (newRoom) {
         ResponseBuilder.fillResponse(newRoom, responseObject);
     }

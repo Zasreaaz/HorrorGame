@@ -4,6 +4,7 @@ import game.engine.java.api.GameTemplate;
 import game.engine.java.api.PlayerSession;
 import game.engine.java.api.PlayerSessionService;
 import game.engine.java.api.ResponseBuilder;
+import game.engine.java.api.base.GameObject;
 import game.engine.java.api.base.Room;
 import game.engine.java.api.response.GameStateResponse;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,9 +45,32 @@ public class GameController {
 
     @GetMapping(path = "/action/{objectId}/{actionId}", produces = "application/json")
     public GameStateResponse performAction(@PathVariable String objectId, @PathVariable String actionId, @RequestHeader(value = "player-session-id", required = false) String sessionId) {
-        GameStateResponse gameState = new GameStateResponse();
-        System.out.println("Error: method not yet implemented");
-        // TODO add code that executes the required action
-        return gameState;
+        PlayerSession playerSession = playerSessionService.getPlayerSession(sessionId);
+        Room room = gameTemplate.getRoomById(playerSession.getCurrentRoom());
+        GameStateResponse gameStateObjectResponse = new GameStateResponse();
+
+                GameObject gameObject = room.findObjectById(objectId);
+                    String actionsResultString;
+                    switch (actionId) {
+                        case "open":
+                            actionsResultString = gameObject.open(playerSession);
+                            break;
+                        case "smell":
+                            actionsResultString = gameObject.smell(playerSession);
+                            break;
+                        case "move":
+                            actionsResultString = gameObject.move(playerSession);
+                            break;
+                            default:
+                                actionsResultString = gameObject.talkTo(playerSession);
+                    }
+
+                    Room CurrentRoom = gameTemplate.getRoomById(playerSession.getCurrentRoom());
+                    if (CurrentRoom != null) {
+                        ResponseBuilder.fillResponse(CurrentRoom, gameStateObjectResponse);
+                    }
+                    gameStateObjectResponse.setLastActionResult(actionsResultString);
+
+                    return gameStateObjectResponse;
     }
 }

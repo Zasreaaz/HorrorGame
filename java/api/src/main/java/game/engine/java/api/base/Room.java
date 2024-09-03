@@ -20,8 +20,12 @@ public abstract class Room extends AbstractGameEntity {
      * @returns GameObject, the GameObject with a matching id
      */
     public GameObject findObjectById(String id) {
-        // TODO implement method
-        // hint check online how to loop over an ArrayList in java
+//         TODO implement method -----
+        for(GameObject object : objects) {
+            if(object.getId().equals(id)) {
+                return object;
+            }
+        }
         return null;
     }
 

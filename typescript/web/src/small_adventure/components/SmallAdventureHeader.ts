@@ -2,7 +2,7 @@ import {LitElement, TemplateResult, css, html} from "lit";
 import {customElement} from "lit/decorators.js";
 
 @customElement("small-adventure-header")
-export class SmallAdventureFooter extends LitElement {
+export class SmallAdventureHeader extends LitElement {
     public static styles = css`   
     a:visited {
         color: white;  
