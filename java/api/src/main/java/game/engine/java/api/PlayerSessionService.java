@@ -29,7 +29,7 @@ public class PlayerSessionService {
      * @returns PlayerSession, that holds data related to the games player session (current room, inventory etc)
      */
 
-    // TODO return session based on id, instead of always the same session ----
+    // TODO return session based on id, instead of always the same session
     public PlayerSession getPlayerSession(String sessionId) {
         if (map.containsKey(sessionId)) {
             return map.get(sessionId);
