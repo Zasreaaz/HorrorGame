@@ -1,6 +1,7 @@
 package game.engine.java.api;
 
 import game.engine.java.api.base.Room;
+import game.engine.java.api.rooms.Basement;
 import game.engine.java.api.rooms.BedRoom;
 import game.engine.java.api.rooms.StartRoom;
 
@@ -15,11 +16,13 @@ public class GameTemplate {
     private List<Room> rooms = new ArrayList();
     private Room startRoom = new StartRoom();
     private Room BedRoom = new BedRoom();
+    private Room basement = new Basement();
 
     private GameTemplate() {
         // TODO add other rooms -----
         this.rooms.add(this.BedRoom);
         this.rooms.add(this.startRoom);
+        this.rooms.add(this.basement);
     }
 
     /**

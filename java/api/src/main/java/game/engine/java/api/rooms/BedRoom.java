@@ -2,6 +2,8 @@ package game.engine.java.api.rooms;
 
 import game.engine.java.api.base.Room;
 import game.engine.java.api.items.Bed;
+import game.engine.java.api.items.Closet;
+import game.engine.java.api.items.Trapfloor;
 
 
 public class BedRoom extends Room {
@@ -10,6 +12,8 @@ public class BedRoom extends Room {
         super("bed_room");
         // TODO add more objects -----
         super.getObjects().add(new Bed("bed"));
+        super.getObjects().add(new Closet("closet"));
+        super.getObjects().add(new Trapfloor("trapfloor"));
 
     }
 

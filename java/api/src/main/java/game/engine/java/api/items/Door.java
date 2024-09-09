@@ -17,7 +17,6 @@ public class Door extends GameObject {
         } else {
             return "Find the magical key first";
         }
-
     }
 
     public String getShortDescription() {
@@ -27,5 +26,4 @@ public class Door extends GameObject {
     public String getFullDescription() {
         return "A Mysterious looking door that gives of a dark mist from it surroundings";
     }
-
 }
